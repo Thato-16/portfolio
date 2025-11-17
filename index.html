@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thato Mokau - Content Strategist & Copywriter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a0e27;
+            --secondary-color: #151b3d;
+            --accent-color: #00d4ff;
+            --accent-secondary: #7b2ff7;
+            --text-color: #e8eaf6;
+            --light-text: #b0b8d4;
+            --spacing: 2rem;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background: var(--primary-color);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at top, #1e3a8a 0%, #0a0e27 50%, #000000 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(0, 212, 255, 0.8), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(123, 47, 247, 0.8), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.4), transparent),
+                radial-gradient(2px 2px at 90% 60%, rgba(0, 212, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 33% 80%, rgba(255, 255, 255, 0.5), transparent),
+                radial-gradient(1px 1px at 15% 90%, rgba(123, 47, 247, 0.5), transparent);
+            background-size: 200% 200%;
+            animation: stars 20s linear infinite;
+        }
+
+        @keyframes stars {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .expertise-item {
+            background: rgba(21, 27, 61, 0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .expertise-item h3 {
+            font-size: 1rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .work-item {
+            background: rgba(21, 27, 61, 0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .work-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7b2ff7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.3), transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .work-content {
+            padding: 2rem;
+        }
+
+        .work-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .work-content p {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1), transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(123, 47, 247, 0.1), transparent 50%);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 14, 39, 0.98);
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+                border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">TM</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Thato Mokau</h1>
+            <p class="subtitle">Content Strategist & Copywriter</p>
+            <p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Storyteller and strategist who turns complex ideas into clear, compelling narratives that drive action.</p>
+            <a href="https://calendly.com/thatomokau-1/30min" target="_blank" class="cta-button">Book a Call</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <p class="section-subtitle fade-in">Storyteller. Strategist. Problem Solver.</p>
+            
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>I'm a storyteller and strategist who loves taking words and building narratives that capture the mind and drive action. I'm thoughtful and look at what happens beyond the paper (or online doc) to think about how I can help your brand actually make a difference.</p>
+                    
+                    <p>My superpower is clarity in communication — taking the overly complex and turning it into something simple, understandable, and memorable.</p>
+                    
+                    <p>With over 6 years of experience, I've worked across diverse industries including technology, healthcare, education, and professional services, helping brands find their voice and connect with their audiences.</p>
+                </div>
+                
+                <div class="expertise-grid fade-in">
+                    <div class="expertise-item">
+                        <h3>Content Strategy</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>Copywriting</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>Digital Strategy</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>Email Marketing</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>SEO Optimization</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>Social Media</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>UX Copywriting</h3>
+                    </div>
+                    <div class="expertise-item">
+                        <h3>Brand Strategy</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work">
+        <div class="container">
+            <h2 class="section-title fade-in">My Work</h2>
+            <p class="section-subtitle fade-in">Selected projects showcasing strategy, creativity, and results</p>
+            
+            <div class="work-grid">
+                <div class="work-item fade-in">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div style="background: rgba(10, 14, 39, 0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">📧</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>Email Marketing Campaign</h3>
+                        <p>Led a B2B email marketing campaign that achieved a 150% increase in subscribers with open rates consistently above 50%. Developed comprehensive content strategy and nurture sequences.</p>
+                        <div class="work-tags">
+                            <span class="tag">Email Marketing</span>
+                            <span class="tag">B2B</span>
+                            <span class="tag">Lead Generation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item fade-in">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div style="background: rgba(10, 14, 39, 0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🚀</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>Go-To-Market Strategy</h3>
+                        <p>Developed comprehensive go-to-market strategy for UK-based consultancy, aligning brand messaging, customer acquisition tactics, and competitive analysis to drive awareness and adoption.</p>
+                        <div class="work-tags">
+                            <span class="tag">Strategy</span>
+                            <span class="tag">GTM</span>
+                            <span class="tag">Positioning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item fade-in">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div style="background: rgba(10, 14, 39, 0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🎯</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>Brand Rebranding</h3>
+                        <p>Led rebranding strategy for multiple clients including a South African wine farm and UK/SA coaching consultancy, redefining visual identity, messaging, and digital presence for improved recognition.</p>
+                        <div class="work-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Content Strategy</span>
+                            <span class="tag">Positioning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item fade-in">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div style="background: rgba(10, 14, 39, 0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">📱</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>Social Media Strategy</h3>
+                        <p>Created content and social media strategies for professional business networks, ensuring cohesive storytelling and audience engagement across multiple platforms.</p>
+                        <div class="work-tags">
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Community</span>
+                            <span class="tag">Content</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item fade-in">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div style="background: rgba(10, 14, 39, 0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">📝</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>Technical Content</h3>
+                        <p>Developed internal and external technical documentation across industries including SAP, healthcare, education, and recruitment. Specialized in making complex topics accessible.</p>
+                        <div class="work-tags">
+                            <span class="tag">Technical Writing</span>
+                            <span class="tag">Documentation</span>
+                            <span class="tag">B2B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item fade-in">
+                    <div class="work-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div style="background: rgba(10, 14, 39, 0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem;">💡</div>
+                    </div>
+                    <div class="work-content">
+                        <h3>Thought Leadership</h3>
+                        <p>Created impactful B2B and thought leadership content for LinkedIn platform, combining technical expertise with strategic storytelling to build executive presence.</p>
+                        <div class="work-tags">
+                            <span class="tag">LinkedIn</span>
+                            <span class="tag">Thought Leadership</span>
+                            <span class="tag">Executive Voice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Connect</h2>
+            <p class="section-subtitle fade-in">Ready to bring clarity to your brand's story?</p>
+            
+            <div class="contact-content fade-in">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📅</span>
+                        <a href="https://calendly.com/thatomokau-1/30min" target="_blank">Schedule a 30-min call</a>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/thatomokau" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://calendly.com/thatomokau-1/30min" target="_blank" title="Book a Call">📅</a>
+                    <a href="https://thatomokau.notion.site/thatomokau-portfolio" target="_blank" title="Portfolio">📄</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Thato Mokau. Crafted with clarity and purpose.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.remove('active');
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add active state to navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
